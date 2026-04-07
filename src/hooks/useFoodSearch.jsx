@@ -11,16 +11,13 @@ function useFoodSearch() {
     setError(null)
 
     try {
-      const response = await axios.get(
-        '/api/cgi/search.pl',
-        {
-          params: {
-            search_terms: query,
-            json: 1,
-            page_size: 10
-          }
+      const response = await axios.get("/api/cgi/search.pl", {
+        params: {
+          search_terms: query,
+          json: 1,
+          page_size: 10
         }
-      )
+      })
 
       const filtered = response.data.products.filter(
         (p) => p.product_name && p.product_name.trim() !== '' && p.code
